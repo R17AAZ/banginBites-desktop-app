@@ -1,0 +1,77 @@
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/inter/700.css";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 14px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  :root {
+    --brand: #CE7A07;
+    --background: #FFFFFF;
+    --foreground: #111827;
+  }
+
+  body {
+    @apply bg-white text-neutral-900 font-sans;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading font-bold tracking-tight text-neutral-900;
+  }
+
+  /* Global shadow removal */
+  * {
+    box-shadow: none !important;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+}
+
+/* Custom styles to enforce the "Flat" constraint */
+@layer components {
+  .btn-flat {
+    @apply relative inline-flex items-center justify-center font-medium transition-all duration-200 active:scale-[0.98] disabled:opacity-50 disabled:pointer-events-none;
+    border: none !important;
+  }
+}
+
+@keyframes sizzle {
+  0% { transform: translateY(0); }
+  25% { transform: translateY(-1px) rotate(-1deg); }
+  50% { transform: translateY(0) rotate(1deg); }
+  75% { transform: translateY(-1px) rotate(-1deg); }
+  100% { transform: translateY(0); }
+}
+
+@keyframes flit {
+  0% { transform: scale(1) rotate(0); }
+  50% { transform: scale(1.1) rotate(5deg); }
+  100% { transform: scale(1) rotate(0); }
+}
+
+.animate-sizzle {
+  animation: sizzle 0.3s ease-in-out infinite;
+}
+
+.animate-flit {
+  animation: flit 0.8s ease-in-out infinite;
+}
